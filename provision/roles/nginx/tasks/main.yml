@@ -1,0 +1,17 @@
+---
+- name: Install pip
+  apt: name=python-pip state=present
+- name: install docker-py
+  pip: name=docker-py
+- name: Build Docker image from Dockerfile
+  docker_image:
+     name: web
+     path: docker_image
+     state: present
+- name: Running the container
+  docker_container:
+     name: nginx
+     image: web:latest
+     ports:
+       - "8080:8080"
+     state: started
