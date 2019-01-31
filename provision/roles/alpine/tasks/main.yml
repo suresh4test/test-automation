@@ -1,0 +1,11 @@
+---
+- name: Install pip
+  apt: name=python-pip state=present
+- name: install docker-py
+  pip: name=docker-py
+- name: Running the Alpine container
+  docker_container:
+     name: alpine
+     image: library/alpine:latest
+     command: ["sleep", "300"]
+     state: started
