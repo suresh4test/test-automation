@@ -1,0 +1,14 @@
+---
+#specific version that we aim at installing.
+docker_version: '18.06.1~ce~3-0~ubuntu'
+
+#release channel to look for packages.
+docker_apt_release_channel: 'stable'
+
+# The url of the apt repository using facts
+docker_apt_repository: 'deb https://download.docker.com/linux/{{ ansible_distribution|lower }} {{ ansible_distribution_release }} {{ docker_apt_release_channel }}'
+
+# List of users that we want to add to the docker group
+docker_group_members:
+  - 'ubuntu'
+  - 'vagrant'
